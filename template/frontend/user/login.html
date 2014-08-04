@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-4">
+
+
+  <form method="post" action="/user/login" class="form ">
+  <legend> Login  </legend>
+  <hr class="hr">
+   
+
+  {% csrf_token %}
+  {{ form.as_p }}
+  
+  <input type="submit"  value="login" class="btn btn-base pull-right" />
+  
+</form>
+
+  </div>
+ 
+
+  <div class="col-md-1"></div>
+</div> 

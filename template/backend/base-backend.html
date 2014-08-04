@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html data-ng-app="backend">
+<head>
+<meta charset="utf-8" />
+<title>{{user.username}}</title>
+
+<!-- to load all the statics files -->
+{% load static %}
+
+
+<!-- here where we can find all the css files -->
+{% block style %}
+
+ <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+ <link href="{% static 'vendor/fullcalendar/fullcalendar/fullcalendar.css' %}" rel="stylesheet" type="text/css"/>
+ <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+ 
+{% endblock %}
+<!-- end of the block -->
+</head>
+
+<body class="wall">
+
+<input type="hidden" id="user_id" value="{{user.id}}">
+<input type="hidden" id="username" value="{{user.username}}">
+
+
+
+<nav class="navbar navbar-base navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+  
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+     <ul class="nav navbar-nav navbar-left">
+        <div class="row">
+           <div class="col-md-6"></div>
+           <div class="col-md-6">
+             <div class="btn-group">
+  <button type="button" class="btn btn-base navbar-btn dropdown-toggle" data-toggle="dropdown">
+        {{user.username}} <span class="caret"> </span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">_("Action")</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="/logout">logout</a></li>
+  </ul>
+</div>
+           </div>
+        </div>
+     	  
+      
+
+     </ul>
+  
+
+      <ul class="nav navbar-nav navbar-right">
+      <div class="col-md-8">
+      	<form class="navbar-form navbar-left" role="search">
+
+        <div class="form-group">
+
+          <input type="text" class="myform-control " placeholder="باسم الله الرحمان الرحيم">
+
+        </div>
+      
+      </form>
+      </div>
+       <div class="col-md-4">
+
+      </div>
+       
+       
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="row  space">
+<div class="col-md-2">
+	 
+</div>
+<div class="col-md-8">
+	<div ng-view >
+		
+	</div>
+</div>
+<div class="col-md-2" ng-controller="sidebarController">
+
+
+
+<div class="list-group">
+<strong>Options</strong>
+ <div ng-repeat="tab in tabs">
+     <a href="#/<%tab.url%>" class="list-group-item"> <img src="{% static 'Icon/Icon/48_48/<%tab.icon%>.png' %}" class="icon"/> <%tab.label%></a>
+ </div>
+
+</div>
+<strong> Applications</strong>
+ <div ng-repeat="app in user.applications">
+     <a href="#/<%app.url%>" class="list-group-item"> <img src="{% static 'Icon/Icon/48_48/<%app.icon%>.png' %}" class="icon"/> <%app.label%></a>
+ </div>
+<strong> Pages</strong>
+<div class="list-group">
+
+{% for page in pages %}
+  <a href="#" class="list-group-item"> <i class="glyphicon  glyphicon-{{page.icon}}"></i> {{page.label}}</a>
+  {% endfor%}
+</div>
+	
+</div>
+
+</div>
+
+<div class="row" ng-controller="sidebarController">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<div class="row ">
+		   <hr>
+			<ul class="list-inline">
+			    
+			    <li ng-repeat="footer in footers" > <a href="#" class="base-color"> <%footer.label%> </a></li>
+			
+			 
+			</ul>
+		</div>
+	</div>
+	<div class="col-md-2">
+   
+
+   
+  </div>
+</div>
+
+
+
+
+
+<!--  here where we  found all the javascripts codes -->
+{% block script %}
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/jquery.min.js'%}"></script>
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/jquery-ui.custom.min.js'%}"></script>
+<script type="text/javascript" charset="utf-8" src="{% static 'vendor/moment.min.js'%}"></script>
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/angular.js'%}"></script> 
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script> 
+<!-- uplaod services -->
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/services/calendar_manager/calendarservice.js'%}">
+ </script>  
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/services/user_manager/userservice.js'%}">
+ </script>
+
+  <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/services/status_manager/statusservice.js'%}">
+ </script>
+  
+
+<!-- angular js application -->
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/app.js'%}"></script> 
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/controllers/calendar_manager/callendarController.js'%}"></script>  
+ 
+
+  <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/controllers/user_manager/welcomeController.js'%}"></script> 
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/controllers/sidebarController.js'%}"></script> 
+ <script type="text/javascript" charset="utf-8" src="{% static 'backend/app/controllers/status_manager/timelineController.js'%}"></script>
+
+
+  <script type="text/javascript" charset="utf-8" src="{% static 'vendor/fullcalendar/fullcalendar/fullcalendar.min.js'%}"></script> 
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/fullcalendar/fullcalendar/lang/all.js'%}"></script>
+
+
+{% endblock%}  
+<!-- end of block -->
+
+
+</body>
+</html>

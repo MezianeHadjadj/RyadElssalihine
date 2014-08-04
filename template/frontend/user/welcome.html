@@ -1,0 +1,94 @@
+   <nav class="navbar navbar-base " role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+  
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+     <ul class="nav navbar-nav navbar-left">
+       <div class="row">
+         <div class="col-md-6">
+           <a href="" class="btn btn-base-white " ng-click="showRegisterForm()"> create account </a>
+         </div>
+         <div class="col-md-6">
+           <a href="" class="btn btn-base-white "> invite people to join us !</a>
+         </div>
+       </div>
+      
+     </ul>
+  
+
+      <ul class="nav navbar-nav navbar-right">
+
+      <div class="row">
+        
+         <div class="col-md-6"> <a href="" class="btn btn-base-logo"> <strong class="base-logo">R</strong>yad Essalihine </a></div>
+          <div class="col-md-6"></div>
+      </div>
+      
+      
+      </ul>
+       
+       
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<div class="row ">
+  <div class="col-md-7"></div>
+
+  <div class="col-md-4">
+   <div class="row " >
+
+  <form  method="post" action="/login"   >
+
+  {% csrf_token %}
+
+  {{ form.as_p }}
+
+  <input type="submit"  value="login" class="btn btn-base pull-right" />
+  
+</form>
+
+
+</div>
+
+
+
+<div class="row mywell" ng-show="register_form">
+     
+      <legend> Create account now ! </legend>
+ <form ng-submit="register(user)" >
+      <div class="form-group">
+      <input type="text" placeholder="FirstName" ng-model="user.firstname" class="form-control" />
+      </div>
+      <div class="form-group">
+      <input type="text" placeholder="LastName" ng-model="user.lastname" class="form-control" />
+      </div>
+      <div class="form-group">
+      <input type="text" placeholder="LastName" ng-model="user.email" class="form-control" />
+      </div>
+      <div class="form-group">
+      <input type="password" placeholder="password" ng-model="user.password" class="form-control" />
+      </div>
+      <div class="form-group">
+       <input type="text" placeholder="agian" ng-model="user.again" class="form-control" />
+       </div>
+
+
+  
+  <input type="submit"  value="create" class="btn btn-base pull-right" />
+  
+   </form>
+</div>
+  
+
+  </div>
+ 
+
+  <div class="col-md-1"></div>
+
+
+</div> 
+

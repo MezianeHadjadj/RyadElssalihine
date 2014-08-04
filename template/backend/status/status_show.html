@@ -1,0 +1,63 @@
+
+<div class="row">
+	
+	<div class="col-md-4 base-col-md">
+		<div class="base-box"></div>
+	</div>
+	<div class="col-md-8 base-col-md">
+
+		
+			<div class="share-base-box">
+			 <div class="share-base-box-head">
+			 	 <div class="form-group">
+    <label for="exampleInputFile" ng-click="showProgressing()">AddFile</label>
+    
+  </div>
+			 </div>
+			 <input type="file" id="exampleInputFile" ng-show="fileProgress">
+			 <div class="share-base-box-body">
+			    <input type="text" class="base-text autofocus " ng-model="status_object.content" placeholder=".........اذكر الله يذكرك">
+			 	 
+
+			 </div>
+             <div class="share-base-box-footer"> 
+              <a href="" ng-click="shareStatus(status_object)" class="btn btn-base" >share</a>  
+             </div>
+           </div>
+	<div   class="status-base-box" ng-show="status_it_comes">
+			 <div class="status-base-box-head">
+			 	 <div class="form-group">
+              </div>
+			 </div>
+			
+			 <div class="status-base-box-body">
+		    <% new_status.content%>
+			 	 
+
+			 </div>
+             <div class="status-base-box-footer"> 
+               <h6>  <span class="label label-time-status "> <% new_status.created_at | date:'MMMM dd, yyyy, HH:mm'%></span></h6> 
+             </div>
+           </div>
+
+           	<div  ng-repeat="status in status_list" class="status-base-box">
+			 <div class="status-base-box-head">
+			 	 <div class="form-group">
+              </div>
+			 </div>
+			
+			 <div class="status-base-box-body">
+		    <% status.content%>
+			 	 
+
+			 </div>
+             <div class="status-base-box-footer"> 
+               <h6>  <span class="label label-time-status "> <% status.created_at | date:'MMMM dd, yyyy, HH:mm'%></span></h6> 
+             </div>
+           </div>
+		
+	</div>
+
+
+	
+</div>

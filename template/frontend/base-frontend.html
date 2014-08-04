@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-ng-app="frontend">
+<head>
+<meta charset="utf-8" />
+<!-- to load all the statics files -->
+{% load static %}
+
+
+<!-- here where we can find all the css files -->
+{% block style %}
+ <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet" type="text/css"/>
+ <link href="{% static 'vendor/fullcalendar/fullcalendar/fullcalendar.css' %}" rel="stylesheet" type="text/css"/>
+ <link href="{% static 'css/base.css' %}" rel="stylesheet" type="text/css"/>
+ 
+{% endblock %}
+<!-- end of the block -->
+</head>
+
+<body class="wall">
+ 
+<div class="row">
+  <div ng-view>
+  	
+  </div>
+</div>
+
+
+
+<!--  here where we  found all the javascripts codes -->
+{% block script %}
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/jquery.min.js'%}"></script>
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/jquery-ui.custom.min.js'%}"></script>
+<script type="text/javascript" charset="utf-8" src="{% static 'vendor/moment.min.js'%}"></script>
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/angular.js'%}"></script> 
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/bootstrap/js/bootstrap.min.js'%}"></script>  
+ <script type="text/javascript" charset="utf-8" src="{% static 'vendor/datetimepicker.js'%}"></script> 
+<!-- uplaod services -->
+
+
+ <script type="text/javascript" charset="utf-8" src="{% static 'frontend/app/services/userservice.js'%}">
+ </script>
+  
+
+<!-- angular js application -->
+ <script type="text/javascript" charset="utf-8" src="{% static 'frontend/app/app.js'%}"></script> 
+  <script type="text/javascript" charset="utf-8" src="{% static 'frontend/app/controllers/welcomeController.js'%}"></script> 
+{% endblock%}  
+<!-- end of block -->
+
+
+</body>
+</html>
